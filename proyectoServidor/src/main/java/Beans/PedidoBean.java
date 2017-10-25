@@ -1,7 +1,7 @@
 package Beans;
 
 import com.google.gson.annotations.Expose;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
