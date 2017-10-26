@@ -99,7 +99,7 @@ public class LineadepedidoDao implements DaoTableInterface<LineadepedidoBean>, D
                 strSQL += " SET ";
                 strSQL += "cantidad= " + oBean.getCantidad() + ", ";
                 strSQL += "id_producto= " + oBean.getId_producto() + ", ";
-                strSQL += "id_tipousuario= " + oBean.getId_pedido();
+                strSQL += "id_pedido= " + oBean.getId_pedido();
                 strSQL += " WHERE id=" + oBean.getId();
             }
             oPreparedStatement = oConnection.prepareStatement(strSQL, Statement.RETURN_GENERATED_KEYS);
@@ -301,7 +301,7 @@ public class LineadepedidoDao implements DaoTableInterface<LineadepedidoBean>, D
 
     public ArrayList<LineadepedidoBean> getPagexpedido(int intRegsPerPag, int intPage, LinkedHashMap<String, String> hmOrder, ArrayList<FilterBeanHelper> alFilter, int id_pedido) throws Exception {
         String strSQL1 = strSQL;
-        strSQL1 += " and id_tipousuario=" + id_pedido + " ";
+        strSQL1 += " and id_pedido=" + id_pedido + " ";
         strSQL1 += SqlBuilder.buildSqlFilter(alFilter);
         strSQL1 += SqlBuilder.buildSqlOrder(hmOrder);
         strSQL1 += SqlBuilder.buildSqlLimit(this.getcount(alFilter), intRegsPerPag, intPage);

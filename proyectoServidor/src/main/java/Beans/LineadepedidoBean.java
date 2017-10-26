@@ -12,7 +12,7 @@ import com.google.gson.annotations.Expose;
 public class LineadepedidoBean {
 
     @Expose
-    private Integer id;
+    private Integer id = null;
     @Expose
     private Integer cantidad;
     @Expose(serialize = false)
@@ -24,6 +24,14 @@ public class LineadepedidoBean {
     @Expose(deserialize = false)
     private ProductoBean obj_producto = null;
 
+    public LineadepedidoBean(Integer id, Integer cantidad, PedidoBean obj_Pedido, 
+            ProductoBean obj_Producto) {
+        this.id = id;
+        this.cantidad = cantidad;
+        this.obj_pedido = obj_Pedido;
+        this.obj_producto = obj_Producto;
+    }
+    
     public LineadepedidoBean(Integer id, Integer cantidad) {
         this.id = id;
         this.cantidad = cantidad;

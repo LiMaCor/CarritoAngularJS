@@ -12,7 +12,7 @@ public class PedidoBean {
 
     // VARIABLES
     @Expose
-    private Integer id;
+    private Integer id = 0;
     @Expose
     private Date fecha;
     @Expose(serialize = false)
@@ -23,6 +23,11 @@ public class PedidoBean {
     // CONSTRUCTORES
     public PedidoBean(int id) {
         this.id = id;
+    }
+    
+    public PedidoBean(Date fecha, Integer id_usuario) {
+        this.fecha = fecha;
+        this.id_usuario = id_usuario;
     }
 
     public PedidoBean() {
