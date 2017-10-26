@@ -1,5 +1,7 @@
 package Beans;
 
+import Beans.PedidoBean;
+import Beans.ProductoBean;
 import com.google.gson.annotations.Expose;
 
 /**
@@ -9,6 +11,10 @@ import com.google.gson.annotations.Expose;
 
 public class LineadepedidoBean {
 
+    @Expose
+    private Integer id;
+    @Expose
+    private Integer cantidad;
     @Expose(serialize = false)
     private Integer id_pedido = 0;
     @Expose(deserialize = false)
@@ -18,7 +24,32 @@ public class LineadepedidoBean {
     @Expose(deserialize = false)
     private ProductoBean obj_producto = null;
 
+    public LineadepedidoBean(Integer id, Integer cantidad) {
+        this.id = id;
+        this.cantidad = cantidad;
+    }
+
+    public LineadepedidoBean(Integer id) {
+        this.id = id;
+    }
+
     public LineadepedidoBean() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
     }
 
     public Integer getId_pedido() {

@@ -12,7 +12,7 @@ public class PedidoBean {
 
     // VARIABLES
     @Expose
-    private int id;
+    private Integer id;
     @Expose
     private Date fecha;
     @Expose(serialize = false)

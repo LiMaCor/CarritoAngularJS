@@ -12,7 +12,7 @@ public class ConnectionClassHelper {
     }
 
     public static String getDatabasePassword() {
-        return "bitnami";
+        return "admin";
     }
 
     public static String getDatabasePort() {
@@ -20,7 +20,7 @@ public class ConnectionClassHelper {
     }
 
     public static String getDatabaseIP() {
-        return "127.0.0.1";
+        return "192.168.122.26";
     }
 
     public static String getConnectionChain() {

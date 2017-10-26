@@ -39,7 +39,7 @@ public class ProductoDao implements DaoTableInterface<ProductoBean>, DaoViewInte
             if (oResultSet.next()) {
                 oBean.setId(oResultSet.getInt("id"));
                 oBean.setNombre(oResultSet.getString("nombre"));
-                oBean.setCantidad(oResultSet.getInt("cantidad"));
+                oBean.setExistencias(oResultSet.getInt("existencias"));
                 oBean.setPrecio(oResultSet.getDouble("precio"));
                 //pendiente la expansión de clave externa
             } else {
@@ -70,20 +70,20 @@ public class ProductoDao implements DaoTableInterface<ProductoBean>, DaoViewInte
                 strSQL = "INSERT INTO " + strTable;
                 strSQL += "( ";
                 strSQL += "nombre, ";
-                strSQL += "cantidad, ";
+                strSQL += "existencias, ";
                 strSQL += "precio, ";
                 strSQL += ") ";
                 strSQL += " VALUES ";
                 strSQL += "( ";
                 strSQL += EncodingUtilHelper.quotate(oBean.getNombre()) + ", ";
-                strSQL += oBean.getCantidad() + ", ";
+                strSQL += oBean.getExistencias() + ", ";
                 strSQL += oBean.getPrecio();
                 strSQL += ")";
             } else {
                 strSQL = "UPDATE " + strTable;
                 strSQL += " SET ";
                 strSQL += "nombre= " + EncodingUtilHelper.quotate(oBean.getNombre()) + ", ";
-                strSQL += "cantidad= " + oBean.getCantidad() + ", ";
+                strSQL += "existencias= " + oBean.getExistencias()+ ", ";
                 strSQL += "precio= " + oBean.getPrecio();
                 strSQL += " WHERE id=" + oBean.getId();
             }
@@ -191,5 +191,4 @@ public class ProductoDao implements DaoTableInterface<ProductoBean>, DaoViewInte
         }
         return aloBean;
     }
-
 }

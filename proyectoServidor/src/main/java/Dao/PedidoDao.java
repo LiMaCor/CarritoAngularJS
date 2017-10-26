@@ -43,7 +43,7 @@ public class PedidoDao implements DaoTableInterface<PedidoBean>, DaoViewInterfac
     public PedidoBean get(PedidoBean oBean, int intExpand) throws Exception {
         PreparedStatement oPreparedStatement = null;
         ResultSet oResultSet = null;
-        strSQL = "SELECT * FROM " + strTable + " WHERE 1=1 ";
+        strSQL = "select * from " + strTable + " WHERE 1=1 ";
         strSQL += " AND id=" + oBean.getId();
         try {
             oPreparedStatement = oConnection.prepareStatement(strSQL);
@@ -274,7 +274,7 @@ public class PedidoDao implements DaoTableInterface<PedidoBean>, DaoViewInterfac
 
     public ArrayList<PedidoBean> getPagexusuario(int intRegsPerPag, int intPage, LinkedHashMap<String, String> hmOrder, ArrayList<FilterBeanHelper> alFilter, int id_usuario) throws Exception {
         String strSQL1 = strSQL;
-        strSQL1 += " AND id_usuario=" + id_usuario + " ";
+        strSQL1 += " and id_usuario=" + id_usuario + " ";
         strSQL1 += SqlBuilder.buildSqlFilter(alFilter);
         strSQL1 += SqlBuilder.buildSqlOrder(hmOrder);
         strSQL1 += SqlBuilder.buildSqlLimit(this.getcount(alFilter), intRegsPerPag, intPage);
@@ -301,5 +301,4 @@ public class PedidoDao implements DaoTableInterface<PedidoBean>, DaoViewInterfac
         }
         return aloBean;
     }
-
 }

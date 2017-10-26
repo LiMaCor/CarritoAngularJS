@@ -1,7 +1,5 @@
 package Helper;
 
-// ==========      ==========
-
 import Beans.ReplyBean;
 import Services.LineadepedidoService;
 import Services.PedidoService;
@@ -10,18 +8,9 @@ import Services.TipousuarioService;
 import Services.UsuarioService;
 import javax.servlet.http.HttpServletRequest;
 
-
-
-import Beans.ReplyBean;
-import Services.PedidoService;
-import Services.ProductoService;
-import Services.TipousuarioService;
-import Services.UsuarioService;
-import javax.servlet.http.HttpServletRequest;
-
 public class MappingHelper {
 
-public static ReplyBean executeMethodService(HttpServletRequest oRequest) throws Exception {
+    public static ReplyBean executeMethodService(HttpServletRequest oRequest) throws Exception {
         String ob = oRequest.getParameter("ob");
         String op = oRequest.getParameter("op");
         ReplyBean oReplyBean = null;
@@ -179,5 +168,4 @@ public static ReplyBean executeMethodService(HttpServletRequest oRequest) throws
         }
         return oReplyBean;
     }
-
 }

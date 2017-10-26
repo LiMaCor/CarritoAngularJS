@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author Julian
  */
 
-public class ProductoService implements ViewServiceInterface, EmptyServiceInterface, TableServiceInterface {
+public class ProductoService implements EmptyServiceInterface, TableServiceInterface, ViewServiceInterface {
 
     HttpServletRequest oRequest = null;
 
@@ -28,7 +28,7 @@ public class ProductoService implements ViewServiceInterface, EmptyServiceInterf
         oRequest = request;
     }
 
-    private Boolean checkPermission(String strMethodName) throws Exception {
+private Boolean checkPermission(String strMethodName) throws Exception {
         UsuarioBean oUsuarioBean = (UsuarioBean) oRequest.getSession().getAttribute("user");
         if (oUsuarioBean != null) {
             return true;

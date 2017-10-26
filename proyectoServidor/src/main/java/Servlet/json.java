@@ -109,7 +109,7 @@ public class json extends HttpServlet {
                 response.setHeader("Access-Control-Allow-Headers", "Origin, Accept, x-requested-with, Content-Type");
 
                 try {
-//                     oReplyBean = (ReplyBean) MappingHelper.executeMethodService(request);
+                    oReplyBean = (ReplyBean) MappingHelper.executeMethodService(request);
 //                    String strClassName = "Services." + ob + "Service";
 //                    ViewServiceInterface oService = (ViewServiceInterface) Class.forName(strClassName).getDeclaredConstructor(HttpServletRequest.class).newInstance(request);
 //                    Method oMethodService = oService.getClass().getMethod(op);

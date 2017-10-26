@@ -51,8 +51,4 @@ public class FilterBeanHelper {
         this.value = value;
     }
     
-    
-    
-    
-    
 }

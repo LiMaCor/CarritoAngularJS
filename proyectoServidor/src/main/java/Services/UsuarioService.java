@@ -56,7 +56,7 @@ public class UsuarioService implements ViewServiceInterface, EmptyServiceInterfa
                 UsuarioBean oBean = new UsuarioBean(id);
                 UsuarioDao oDao = new UsuarioDao(oConnection);
                 oBean = oDao.get(oBean, AppConfigurationHelper.getJsonMsgDepth());
-                Gson oGson = new Gson();
+                Gson oGson = AppConfigurationHelper.getGson();
                 String strJson = oGson.toJson(oBean);
                 oReplyBean = new ReplyBean(200, strJson);
             } catch (Exception ex) {
@@ -90,7 +90,7 @@ public class UsuarioService implements ViewServiceInterface, EmptyServiceInterfa
             ConnectionInterface oPooledConnection = null;
             ReplyBean oReplyBean = null;
             UsuarioBean oBean = new UsuarioBean();
-            Gson oGson = new Gson();
+            Gson oGson = AppConfigurationHelper.getGson();
             oBean = oGson.fromJson(json, oBean.getClass());
             int iResult = 0;
             try {
@@ -137,7 +137,7 @@ public class UsuarioService implements ViewServiceInterface, EmptyServiceInterfa
                 oConnection = oPooledConnection.newConnection();
                 UsuarioDao oDao = new UsuarioDao(oConnection);
                 iResult = oDao.remove(id);
-                Gson oGson = new Gson();
+                 Gson oGson = AppConfigurationHelper.getGson();
                 String strJson = oGson.toJson(iResult);
                 oReplyBean = new ReplyBean(200, strJson);
             } catch (Exception ex) {
@@ -179,7 +179,7 @@ public class UsuarioService implements ViewServiceInterface, EmptyServiceInterfa
                 oConnection = oPooledConnection.newConnection();
                 UsuarioDao oDao = new UsuarioDao(oConnection);
                 lResult = oDao.getcount(alFilter);
-                Gson oGson = new Gson();
+                Gson oGson = AppConfigurationHelper.getGson();
                 String strJson = oGson.toJson(lResult);
                 oReplyBean = new ReplyBean(200, strJson);
             } catch (Exception ex) {
@@ -224,7 +224,7 @@ public class UsuarioService implements ViewServiceInterface, EmptyServiceInterfa
                 oConnection = oPooledConnection.newConnection();
                 UsuarioDao oDao = new UsuarioDao(oConnection);
                 aloBean = oDao.getpage(rpp, np, hmOrder, alFilter);
-                Gson oGson = new Gson();
+                Gson oGson = AppConfigurationHelper.getGson();
                 String strJson = oGson.toJson(aloBean);
                 oReplyBean = new ReplyBean(200, strJson);
             } catch (Exception ex) {

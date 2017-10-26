@@ -11,13 +11,13 @@ public class ProductoBean {
 
     // VARIABLES
     @Expose
-    private int id;
+    private Integer id;
     @Expose
     private String nombre;
     @Expose
-    private int cantidad;
+    private Integer existencias;
     @Expose
-    private double precio;
+    private Double precio;
 
     // CONSTRUCTORES
     public ProductoBean(int id) {
@@ -45,12 +45,12 @@ public class ProductoBean {
         this.nombre = nombre;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public int getExistencias() {
+        return existencias;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setExistencias(int existencias) {
+        this.existencias = existencias;
     }
 
     public double getPrecio() {
