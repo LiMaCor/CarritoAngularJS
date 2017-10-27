@@ -177,7 +177,7 @@ public class CarritoService implements TableServiceCarrito, ViewServiceCarrito {
             ReplyBean oReplyBean = null;
             Connection oConnection = null;
             ConnectionInterface oPooledConnection = null;
-            Date fecha = Date.valueOf(oRequest.getParameter("fecha"));
+            Date fecha = new Date(2017 / 10 /27); //Date.valueOf(oRequest.getParameter("fecha"));
             try {
                 oPooledConnection = AppConfigurationHelper.getSourceConnection();
                 oConnection = oPooledConnection.newConnection();
@@ -187,16 +187,21 @@ public class CarritoService implements TableServiceCarrito, ViewServiceCarrito {
                 PedidoDao oPedidoDao = new PedidoDao(oConnection);
                 oPedidoBean.setId(oPedidoDao.set(oPedidoBean));
                 oPedidoDao.set(oPedidoBean);
+                ProductoBean oProductoBean = null;
+                ProductoDao oProductoDao = new ProductoDao(oConnection);
                 LineadepedidoDao oLineadepedidoDao = new LineadepedidoDao(oConnection);
                 for (int i = 0; i < alCarritoSize; i++) {
-                    ProductoBean oProductoBean = alCarrito.get(i).getoProducto();
+                    oProductoBean = alCarrito.get(i).getoProducto();
+                    Integer newCantidad = alCarrito.get(i).getCantidad();
                     LineadepedidoBean oLineadepedidoBean = new LineadepedidoBean();
-                    oLineadepedidoBean.setCantidad(oProductoBean.getExistencias());
+                    oLineadepedidoBean.setCantidad(newCantidad);
                     oLineadepedidoBean.setId_pedido(oPedidoBean.getId());
                     oLineadepedidoBean.setId_producto(oProductoBean.getId());
                     oLineadepedidoBean.setId(oLineadepedidoDao.set(oLineadepedidoBean));
                     oLineadepedidoDao.set(oLineadepedidoBean);
+                    oProductoBean.setExistencias(oProductoBean.getExistencias() - newCantidad);
                 }
+                oProductoDao.set(oProductoBean);
                 alCarrito.clear();
             } catch (Exception ex) {
                 String msg = this.getClass().getName() + ":" + (ex.getStackTrace()[0]).getMethodName();

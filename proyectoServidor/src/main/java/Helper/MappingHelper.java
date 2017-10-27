@@ -186,6 +186,7 @@ public class MappingHelper {
                         oReplyBean = new ReplyBean(500, "Operation not found : Please contact your administrator");
                         break;
                 }
+                break;
 
             default:
                 oReplyBean = new ReplyBean(500, "Object not found : Please contact your administrator");
