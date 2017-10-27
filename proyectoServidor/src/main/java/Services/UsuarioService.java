@@ -1,5 +1,6 @@
 package Services;
 
+import Beans.CarritoBean;
 import Beans.ReplyBean;
 import Beans.UsuarioBean;
 import Connection.ConnectionInterface;
@@ -256,8 +257,10 @@ public class UsuarioService implements ViewServiceInterface, EmptyServiceInterfa
                 oConnection = AppConfigurationHelper.getSourceConnection().newConnection();
                 UsuarioDao oDao = new UsuarioDao(oConnection);
                 oUsuarioBean = oDao.getFromLoginAndPass(oUsuarioBean);
+                ArrayList<CarritoBean> alCarrito = new ArrayList<CarritoBean>();
                 HttpSession oSession = oRequest.getSession();
                 oSession.setAttribute("user", oUsuarioBean);
+                oSession.setAttribute("carrito", alCarrito);
                 Gson oGson = AppConfigurationHelper.getGson();
                 String strJson = oGson.toJson(oUsuarioBean);
                 oReplyBean = new ReplyBean(200, strJson);

@@ -1,6 +1,7 @@
 package Helper;
 
 import Beans.ReplyBean;
+import Services.CarritoService;
 import Services.LineadepedidoService;
 import Services.PedidoService;
 import Services.ProductoService;
@@ -162,6 +163,30 @@ public class MappingHelper {
                         oReplyBean = new ReplyBean(500, "Operation not found : Please contact your administrator");
                         break;
                 }
+                break;
+            case "carrito":
+                CarritoService oCarritoService = new CarritoService(oRequest);
+                switch (op) {
+                    case "add":
+                        oReplyBean = oCarritoService.add();
+                        break;
+                    case "remove":
+                        oReplyBean = oCarritoService.remove();
+                        break;
+                    case "list":
+                        oReplyBean = oCarritoService.list();
+                        break;
+                    case "buy":
+                        oReplyBean = oCarritoService.buy();
+                        break;
+                    case "empty":
+                        oReplyBean = oCarritoService.empty();
+                        break;
+                    default:
+                        oReplyBean = new ReplyBean(500, "Operation not found : Please contact your administrator");
+                        break;
+                }
+
             default:
                 oReplyBean = new ReplyBean(500, "Object not found : Please contact your administrator");
                 break;
