@@ -200,8 +200,8 @@ public class CarritoService implements TableServiceCarrito, ViewServiceCarrito {
                     oLineadepedidoBean.setId(oLineadepedidoDao.set(oLineadepedidoBean));
                     oLineadepedidoDao.set(oLineadepedidoBean);
                     oProductoBean.setExistencias(oProductoBean.getExistencias() - newCantidad);
+                    oProductoDao.set(oProductoBean);
                 }
-                oProductoDao.set(oProductoBean);
                 alCarrito.clear();
             } catch (Exception ex) {
                 String msg = this.getClass().getName() + ":" + (ex.getStackTrace()[0]).getMethodName();
