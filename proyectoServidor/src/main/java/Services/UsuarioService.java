@@ -138,7 +138,7 @@ public class UsuarioService implements ViewServiceInterface, EmptyServiceInterfa
                 oConnection = oPooledConnection.newConnection();
                 UsuarioDao oDao = new UsuarioDao(oConnection);
                 iResult = oDao.remove(id);
-                 Gson oGson = AppConfigurationHelper.getGson();
+                Gson oGson = AppConfigurationHelper.getGson();
                 String strJson = oGson.toJson(iResult);
                 oReplyBean = new ReplyBean(200, strJson);
             } catch (Exception ex) {
@@ -259,7 +259,7 @@ public class UsuarioService implements ViewServiceInterface, EmptyServiceInterfa
                 oUsuarioBean = oDao.getFromLoginAndPass(oUsuarioBean);
                 ArrayList<CarritoBean> alCarrito = new ArrayList<CarritoBean>();
                 HttpSession oSession = oRequest.getSession();
-                oSession.setAttribute("user", oUsuarioBean);
+                oSession.setAttribute("admin", oUsuarioBean);
                 oSession.setAttribute("carrito", alCarrito);
                 Gson oGson = AppConfigurationHelper.getGson();
                 String strJson = oGson.toJson(oUsuarioBean);

@@ -46,7 +46,6 @@ public class json extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, Exception {
-        //response.setContentType("application/json;charset=UTF-8");
         ReplyBean oReplyBean = null;
         try (PrintWriter out = response.getWriter()) {
 
@@ -110,10 +109,6 @@ public class json extends HttpServlet {
 
                 try {
                     oReplyBean = (ReplyBean) MappingHelper.executeMethodService(request);
-//                    String strClassName = "Services." + ob + "Service";
-//                    ViewServiceInterface oService = (ViewServiceInterface) Class.forName(strClassName).getDeclaredConstructor(HttpServletRequest.class).newInstance(request);
-//                    Method oMethodService = oService.getClass().getMethod(op);
-//                    oReplyBean = (ReplyBean) oMethodService.invoke(oService);
                 } catch (Exception ex) {
                     if (EstadoHelper.getTipo_estado() == Tipo_estado.Debug) {
                         out.println(ex);
