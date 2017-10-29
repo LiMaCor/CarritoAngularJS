@@ -186,7 +186,7 @@ public class CarritoService implements TableServiceCarrito, ViewServiceCarrito {
                 PedidoBean oPedidoBean = new PedidoBean(fecha, oUsuarioBean.getId());
                 PedidoDao oPedidoDao = new PedidoDao(oConnection);
                 oPedidoBean.setId(oPedidoDao.set(oPedidoBean));
-                oPedidoDao.set(oPedidoBean);
+                //oPedidoDao.set(oPedidoBean);
                 ProductoBean oProductoBean = null;
                 ProductoDao oProductoDao = new ProductoDao(oConnection);
                 LineadepedidoDao oLineadepedidoDao = new LineadepedidoDao(oConnection);
@@ -198,7 +198,7 @@ public class CarritoService implements TableServiceCarrito, ViewServiceCarrito {
                     oLineadepedidoBean.setId_pedido(oPedidoBean.getId());
                     oLineadepedidoBean.setId_producto(oProductoBean.getId());
                     oLineadepedidoBean.setId(oLineadepedidoDao.set(oLineadepedidoBean));
-                    oLineadepedidoDao.set(oLineadepedidoBean);
+                    //oLineadepedidoDao.set(oLineadepedidoBean);
                     oProductoBean.setExistencias(oProductoBean.getExistencias() - newCantidad);
                     oProductoDao.set(oProductoBean);
                 }
