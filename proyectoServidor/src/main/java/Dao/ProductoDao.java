@@ -32,6 +32,7 @@ public class ProductoDao implements DaoTableInterface<ProductoBean>, DaoViewInte
     public ProductoBean get(ProductoBean oBean, int intExpand) throws Exception {
         PreparedStatement oPreparedStatement = null;
         ResultSet oResultSet = null;
+        String strSQL = "SELECT * FROM " + strTable + " WHERE 1=1";
         strSQL += " AND id=" + oBean.getId();
         try {
             oPreparedStatement = oConnection.prepareStatement(strSQL);
