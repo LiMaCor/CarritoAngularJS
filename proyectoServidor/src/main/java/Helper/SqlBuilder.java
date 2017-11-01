@@ -10,7 +10,6 @@ import java.util.Map;
  *
  * @author Julian
  */
-
 public class SqlBuilder {
 
     private static String getFilterExpression(FilterBeanHelper temp) {
@@ -45,12 +44,13 @@ public class SqlBuilder {
         }
     }
 
-    public static String buildSqlLimit(Long intRegistrosTotales, Integer intRegistrosPorPagina,
-            Integer intNumeroPagina) {
+    public static String buildSqlLimit(Long intRegistrosTotales, Integer intRegistrosPorPagina, Integer intNumeroPagina) {
         String SQLLimit = "";
         if (intRegistrosPorPagina > 0 && intRegistrosPorPagina < 10000) {
-            if (intNumeroPagina > 0 && intNumeroPagina <= (ceil(intRegistrosTotales / intRegistrosPorPagina))) {
+            if (intNumeroPagina > 0 && intNumeroPagina <= (ceil((intRegistrosTotales / intRegistrosPorPagina) + 1))) {
                 SQLLimit = " LIMIT " + (intNumeroPagina - 1) * intRegistrosPorPagina + " , " + intRegistrosPorPagina;
+            } else {
+                SQLLimit = " LIMIT 0 ";
             }
         }
         return SQLLimit;
